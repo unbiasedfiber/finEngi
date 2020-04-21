@@ -127,18 +127,18 @@ t = calibrated_binom_tree(
 
 # first, generate the stonks lattice from which we can answer the following
 # quiz questions
-stonks_lattice = t.make_stock_lattice()
+stocks_lattice = t.make_stock_lattice()
 
 # Question 1
 # Compute the fair value of an American call option, strike 110, n = 15
-options_lattice = t.make_options_lattice(stonks_lattice,
+options_lattice = t.make_options_lattice(stocks_lattice,
                                             is_call=True, is_choose=False, is_american=True)
 call_price = options_lattice["t=0"];
 print("Q1 : Price is " + str(*call_price) + "\n")
 
 # Question 2
 # Compute the fair value of an American put option, strike 110, n = 15
-options_lattice = t.make_options_lattice(stonks_lattice,
+options_lattice = t.make_options_lattice(stocks_lattice,
                                             is_call=False, is_choose=False, is_american=True)
 put_price = options_lattice["t=0"];
 print("Q2 : Price is " + str(*put_price) + "\n")
@@ -155,7 +155,7 @@ print("Q5 : put, call parity is {0} , {1}".format(round(p,2), round(c,2)) + "\n"
 # Question 6
 # compute the fair value of an American call option, strike 110, n = 10
 # on a futures contract that expires n = 10
-futures_lattice = t.make_future_lattice(stonks_lattice)
+futures_lattice = t.make_future_lattice(stocks_lattice)
 t.n = 10; #adjust the period for the new contract, from 15 to 10
 options_lattice = t.make_options_lattice(futures_lattice,
                                             is_call=True, is_choose=False, is_american=True)
