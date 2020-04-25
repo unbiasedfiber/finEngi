@@ -202,21 +202,3 @@ bb.n = 5
 swaption_lattice = bb.make_swaption_lattice(swap_lattice=swap_lattice, rate_lattice=short_rate_lattice, strike=0)
 price = swaption_lattice["t=0"][0]*1000000
 print(round(price,0))
-
-
-
-
-"""
-PM, how did you build the lattice so that the swaption is correct? My lattice doesn't price neither the the swap nor the swaption correctly.
-
-What I do is the following:
-
-At step 10 I discount (short rate - fixed rate) / (1+short rate)
-At steps 1 - 9 I compute (short rate - fixed rate +1/2 * (price up @ t+1) + 1/2 * (price down @ t+1) ) / (1+short rate)
-At step 0 I simply compute (1/2 * (price up @ t+1) + 1/2 * (price down @ t+1) ) / (1+short rate)
-For the swaption
-
-At step 5 I compute the payoff MAX(0,swap lattice value)
-At all the previous steps I do (1/2 * (price up @ t+1) + 1/2 * (price down @ t+1) ) / (1+short rate)
-The values of neither the swap, nor the swaption are correct. I thought that's the way I'm supposed to compute stuff. What do I miss? Help would be appreciated a lot!
-"""
