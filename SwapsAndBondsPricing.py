@@ -191,6 +191,7 @@ print(str(*price) + " or 2.35 (correct answer) with fewer significant digits in 
 # to answer correctly, unlike the previous questions.
 
 # Question 5 compute init value of forward-starting swap, starting at t=1
+# notional value of 1,000,000 dollars
 bb.n=10
 swap_lattice = bb.make_swap_lattice(rate_lattice=short_rate_lattice,
                                     term_start=1, #first payment is >t=1
@@ -199,6 +200,7 @@ price = swap_lattice["t=0"][0]*1000000
 print(round(price,0))
 
 # Question 6 compute the init price of a swaption that matures at time
+# notional value of 1,000,000 dollars
 bb.n = 5
 swaption_lattice = bb.make_swaption_lattice(swap_lattice=swap_lattice, rate_lattice=short_rate_lattice, strike=0)
 price = swaption_lattice["t=0"][0]*1000000
