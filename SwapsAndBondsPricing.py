@@ -87,7 +87,6 @@ class bond_binom_tree(object):
         return new_lattice
 
 
-        #fix this one
     def make_swap_lattice(self, rate_lattice, term_start, fixed_rate):
         new_lattice = {"t="+str(i):[] for i in range(self.n+1)}
         #new_lattice["t="+str(self.n)] = [ round((i-fixed_rate),4) for i in rate_lattice["t="+str(self.n)] ]
