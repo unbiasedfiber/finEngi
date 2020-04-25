@@ -8,6 +8,10 @@ Coursera Financial Engineering Part 1, Week 5 Quiz
 
 Bond pricing and fixed income securities
 
+TODO : maybe someone can add an elementary price lattice?
+       it's not necessary for this assignment but it would
+       be neat yeah.
+
 '''
 import math
 
@@ -22,9 +26,6 @@ class bond_binom_tree(object):
         self.d = down_rate;
         self.q = risk_neutral_prob;
         self.n = period_lim;
-
-    def _elem_price(self, ru, rd, Cu, Cd):
-        return self.q*(Cu/(1+ru)) + (1-self.q)*(Cd/(1+rd))
 
     def _futures_value(self, Cu, Cd):
         return (Cd*self.q+ Cu*(1-self.q))
